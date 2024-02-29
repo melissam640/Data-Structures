@@ -1,5 +1,6 @@
 """Functions to parse a file containing villager data."""
 
+file = open("villagers.csv")
 
 def all_species(filename):
     """Return a set of unique species in the given file.
@@ -14,6 +15,11 @@ def all_species(filename):
     species = set()
 
     # TODO: replace this with your code
+    for line in filename:
+        line = line.rstrip()
+        words = line.split("|")
+        
+        species.add(words[1])
 
     return species
 
@@ -104,3 +110,5 @@ def find_likeminded_villagers(filename, villager_name):
     """
 
     # TODO: replace this with your code
+
+# file.close()
