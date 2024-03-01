@@ -107,7 +107,10 @@ def all_data(filename):
 
     all_data = []
 
-    # TODO: replace this with your code
+    for line in filename:
+        line = line.rstrip()
+        words = tuple(line.split("|"))
+        all_data.append(words)
 
     return all_data
 
