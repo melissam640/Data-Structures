@@ -21,6 +21,8 @@ def all_species(filename):
         
         species.add(words[1])
 
+
+
     return species
 
 
@@ -37,7 +39,16 @@ def get_villagers_by_species(filename, search_string="All"):
 
     villagers = []
 
-    # TODO: replace this with your code
+    for line in filename:
+        line = line.rstrip()
+        words = line.split("|")
+        
+        if search_string == "All":
+            villagers.append(words[0])
+        else:
+            if words[1] == search_string:
+                villagers.append(words[0])
+      
 
     return sorted(villagers)
 
