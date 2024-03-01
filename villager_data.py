@@ -63,9 +63,33 @@ def all_names_by_hobby(filename):
         - list[list[str]]: a list of lists containing names
     """
 
-    # TODO: replace this with your code
+    fitness_list = []
+    nature_list = []
+    education_list = []
+    music_list = []
+    fashion_list = []
+    play_list = []
+    final_list = [fitness_list, nature_list, education_list, music_list, fashion_list, play_list]
+    
+    for line in filename:
+        line = line.rstrip()
+        words = line.split("|")
+        
+        if words[3] == "Fitness":
+            fitness_list.append(words[0])
+        elif words[3] == "Nature":
+            nature_list.append(words[0])
+        elif words[3] == "Education":
+            education_list.append(words[0])
+        elif words[3] == "Music":
+            music_list.append(words[0])
+        elif words[3] == "Fashion":
+            fashion_list.append(words[0])
+        else:
+            play_list.append(words[0])
 
-    return []
+
+    return final_list
 
 
 def all_data(filename):
