@@ -155,7 +155,26 @@ def find_likeminded_villagers(filename, villager_name):
         >>> find_likeminded_villagers('villagers.csv', 'Wendy')
         {'Bella', ..., 'Carmen'}
     """
+    like_minded_animals = []
 
-    # TODO: replace this with your code
+    for line in filename:
+        line = line.rstrip()
+        words = line.split("|")
+
+        if villager_name == words[0]:
+            villager_personality = words[2]
+    
+
+    for line in filename:
+        line = line.rstrip()
+        words = line.split("|")
+
+        if words[2] == villager_personality: 
+            like_minded_animals.append(words[0])
+        
+
+    set_list = set(like_minded_animals)
+
+    return set_list
 
 # file.close()
