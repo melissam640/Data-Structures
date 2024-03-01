@@ -1,7 +1,5 @@
 """Functions to parse a file containing villager data."""
 
-file = open("villagers.csv")
-
 def all_species(filename):
     """Return a set of unique species in the given file.
 
@@ -11,6 +9,7 @@ def all_species(filename):
     Return:
         - set[str]: a set of strings
     """
+    filename = open(filename)
 
     species = set()
 
@@ -36,6 +35,7 @@ def get_villagers_by_species(filename, search_string="All"):
     Return:
         - list[str]: a list of names
     """
+    filename = open(filename)
 
     villagers = []
 
@@ -62,6 +62,7 @@ def all_names_by_hobby(filename):
     Return:
         - list[list[str]]: a list of lists containing names
     """
+    filename = open(filename)
 
     fitness_list = []
     nature_list = []
@@ -104,6 +105,7 @@ def all_data(filename):
     Return:
         - list[tuple[str]]: a list of tuples containing strings
     """
+    filename = open(filename)
 
     all_data = []
 
@@ -128,6 +130,7 @@ def find_motto(filename, villager_name):
     Return:
         - str: the villager's motto or None
     """
+    filename = open(filename)
 
     for line in filename:
         line = line.rstrip()
@@ -155,26 +158,26 @@ def find_likeminded_villagers(filename, villager_name):
         >>> find_likeminded_villagers('villagers.csv', 'Wendy')
         {'Bella', ..., 'Carmen'}
     """
-    like_minded_animals = []
+    
+    filename = open(filename)
 
-    for line in filename:
+    like_minded_animals = set()
+    
+    villager_personality = None
+    for line in file:
         line = line.rstrip()
         words = line.split("|")
 
         if villager_name == words[0]:
             villager_personality = words[2]
-    
+            break
 
-    for line in filename:
-        line = line.rstrip()
-        words = line.split("|")
+    if villager_personality:
+        for line in file:
+            line = line.rstrip()
+            words = line.split("|")
 
-        if words[2] == villager_personality: 
-            like_minded_animals.append(words[0])
+            if words[2] == villager_personality: 
+                like_minded_animals.add(words[0])
         
-
-    set_list = set(like_minded_animals)
-
-    return set_list
-
-# file.close()
+    return like_minded_animals
