@@ -164,7 +164,7 @@ def find_likeminded_villagers(filename, villager_name):
     like_minded_animals = set()
     
     villager_personality = None
-    for line in file:
+    for line in filename:
         line = line.rstrip()
         words = line.split("|")
 
@@ -173,7 +173,7 @@ def find_likeminded_villagers(filename, villager_name):
             break
 
     if villager_personality:
-        for line in file:
+        for line in filename:
             line = line.rstrip()
             words = line.split("|")
 
